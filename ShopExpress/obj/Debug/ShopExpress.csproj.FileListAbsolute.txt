@@ -1,0 +1,14 @@
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\bin\Debug\ShopExpress.exe.config
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\bin\Debug\ShopExpress.exe
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\bin\Debug\ShopExpress.pdb
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\bin\Debug\EntityFramework.dll
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\bin\Debug\EntityFramework.SqlServer.dll
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\bin\Debug\EntityFramework.xml
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\bin\Debug\EntityFramework.SqlServer.xml
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\obj\Debug\ShopExpress.csprojResolveAssemblyReference.cache
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\obj\Debug\ShopExpress.Form1.resources
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\obj\Debug\ShopExpress.Properties.Resources.resources
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\obj\Debug\ShopExpress.csproj.GenerateResource.Cache
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\obj\Debug\ShopExpress.exe
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\obj\Debug\ShopExpress.pdb
+D:\Users\ievam\Documents\Visual Studio 2015\Projects\ShopExpress\ShopExpress\ShopExpress\obj\Debug\ShopExpress.Form2.resources

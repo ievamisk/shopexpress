@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopExpressModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="ShopExpressModel.FK_Product_ToTable" FromRole="User" ToRole="Product" />
+    <NavigationProperty Name="Orders" Relationship="ShopExpressModel.FK_Table_ToTable1" FromRole="User" ToRole="Order" />
+  </EntityType>
+  <EntityContainer Name="ShopExpressEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Categories" EntityType="ShopExpressModel.Category" />
+    <EntitySet Name="Products" EntityType="ShopExpressModel.Product" />
+    <AssociationSet Name="FK_Product_ToTable_1" Association="ShopExpressModel.FK_Product_ToTable_1">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ToTable" Association="ShopExpressModel.FK_Product_ToTable">
+      <End EntitySet="Users" Role="User" />
+      <End EntitySet="Products" Role="Product" />
+    </AssociationSet>
+    <EntitySet Name="Colors" EntityType="ShopExpressModel.Color" />
+    <AssociationSet Name="FK_Product_ToTable_2" Association="ShopExpressModel.FK_Product_ToTable_2">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <EntitySet Name="Orders" EntityType="ShopExpressModel.Order" />
+    <AssociationSet Name="FK_Table_ToTable1" Association="ShopExpressModel.FK_Table_ToTable1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_ToTable_11" Association="ShopExpressModel.FK_Table_ToTable_11">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="ShopExpressModel.FK_Product_ToTable_1" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="productID" />
+    </Key>
+    <Property Name="productID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="genderCategory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="categoryID" Type="Int32" Nullable="false" />
+    <Property Name="productName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="size" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="picture" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Category" Relationship="ShopExpressModel.FK_Product_ToTable_1" FromRole="Product" ToRole="Category" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="ShopExpressModel.FK_Product_ToTable" FromRole="Product" ToRole="User" />
+    <Property Name="colorID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Color" Relationship="ShopExpressModel.FK_Product_ToTable_2" FromRole="Product" ToRole="Color" />
+    <NavigationProperty Name="Orders" Relationship="ShopExpressModel.FK_Table_ToTable_11" FromRole="Product" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_Product_ToTable_1">
+    <End Type="ShopExpressModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="ShopExpressModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ToTable">
+    <End Type="ShopExpressModel.User" Multiplicity="1" Role="User" />
+    <End Type="ShopExpressModel.Product" Multiplicity="*" Role="Product" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="colorID" />
+    </Key>
+    <Property Name="colorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="ShopExpressModel.FK_Product_ToTable_2" FromRole="Color" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Product_ToTable_2">
+    <End Type="ShopExpressModel.Color" Role="Color" Multiplicity="1" />
+    <End Type="ShopExpressModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="colorID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="colorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="productID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="ShopExpressModel.FK_Table_ToTable1" FromRole="Order" ToRole="User" />
+    <NavigationProperty Name="Product" Relationship="ShopExpressModel.FK_Table_ToTable_11" FromRole="Order" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Table_ToTable1">
+    <End Type="ShopExpressModel.User" Role="User" Multiplicity="1" />
+    <End Type="ShopExpressModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_ToTable_11">
+    <End Type="ShopExpressModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="ShopExpressModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
